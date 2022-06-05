@@ -113,6 +113,8 @@ class API:
         for i in hotels:
             info = Hotels(i)
             distance = info.radius.split()
+            if distance[0] is None:
+                distance[0] = 0
             distance = float(distance[0])
             if float(radius) >= distance:
                 result.append(i)
@@ -145,7 +147,9 @@ class API:
 class Person:
 
     def __init__(self):
-        self.choise = None  # Название функции, выбранной пользователем
+        self.time = None # Время поиска
+        self.id_chat = None # Id чата
+        self.choice = None  # Название функции, выбранной пользователем
         self.city = None  # Название города
         self.min_price = None  # Минимальная цена
         self.max_price = None  # Максимальная цена
@@ -153,3 +157,4 @@ class Person:
         self.num_city = None  # Кол-во отелей
         self.nums_photo = None  # Кол-во фотографий
         self.hotels = list()  # Результат поиска
+
